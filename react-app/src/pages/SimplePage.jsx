@@ -12,7 +12,9 @@ export default class SimplePage extends React.Component {
     
     handleFormSubmit = e => {
         e.preventDefault();
-        console.log("handleFormSubmit e", e);
+        
+        //console.log("handleFormSubmit e", e);
+        console.log('email', this.state.email);
     }
     
     render() {
