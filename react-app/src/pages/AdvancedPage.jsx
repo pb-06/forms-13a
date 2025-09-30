@@ -1,10 +1,27 @@
 import React from "react";
+import InputField from "../components/InputField/InputField";
+
 export default class AdvancedPage extends React.Component {
+    state = {
+        advText: '',
+    }
+
+    handleAdvTextValueChange = advText => this.setState({advText});
+    
     render() {
         return (
             <div id="content-advanced" className="tab-content active">
                 <h2>Advanced Form Elements</h2>
                 <form autoComplete="on">
+                    <InputField
+                        type="text"
+                        name="adv-text"
+                        label="Text:"
+                        placeholder="Text input sample"
+                        onValueChange={this.handleAdvTextValueChange}
+
+                    />
+
                     <div className="form-row">
                         <label htmlFor="adv-text">Text:</label>
                         <input type="text" id="adv-text" name="adv-text" placeholder="Text input sample" />
@@ -26,7 +43,7 @@ export default class AdvancedPage extends React.Component {
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-color">Color picker:</label>
-                        <input type="color" id="adv-color" name="adv-color" value="#263159" onChange={()=>{}} />
+                        <input type="color" id="adv-color" name="adv-color" value="#263159" onChange={() => { }} />
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-month">Month:</label>
@@ -59,16 +76,16 @@ export default class AdvancedPage extends React.Component {
                     <div className="form-row">
                         <label htmlFor="adv-hidden">Hidden value:</label>
                         <input type="hidden" id="adv-hidden" name="adv-hidden" value="sample_hidden" />
-                        <span style={{color: "#999"}}>(hidden in UI)</span>
+                        <span style={{ color: "#999" }}>(hidden in UI)</span>
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-number">Number:</label>
-                        <input type="number" id="adv-number" name="adv-number" min="0" max="100" step="1" value="42" onChange={()=>{}} />
+                        <input type="number" id="adv-number" name="adv-number" min="0" max="100" step="1" value="42" onChange={() => { }} />
                     </div>
                     <div className="form-row range-bar">
                         <label htmlFor="adv-range">Range:</label>
-                        <input type="range" id="adv-range" name="adv-range" min="0" max="100" step="1" value="50" onInput={()=>{}} />
-                        <span id="rangeValue" style={{minWidth:'32px'}}>50</span>
+                        <input type="range" id="adv-range" name="adv-range" min="0" max="100" step="1" value="50" onInput={() => { }} />
+                        <span id="rangeValue" style={{ minWidth: '32px' }}>50</span>
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-select">Select:</label>
@@ -90,5 +107,10 @@ export default class AdvancedPage extends React.Component {
                 </form>
             </div>
         )
+    }
+
+    componentDidUpdate(prevState, prevProps) {
+        console.log('AdvancedPage state prev next', prevState, this.state);
+        console.log('AdvancedPage props prev next', prevProps, this.props);
     }
 }
