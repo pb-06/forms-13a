@@ -3,6 +3,7 @@ import InputField from "../components/InputField/InputField";
 import RadioGroup from "../components/RadioGroup/RadioGroup";
 import Checkbox from "../components/Checkbox/Checkbox";
 import ColorPicker from "../components/ColorPicker/ColorPicker";
+import MonthPicker from "../components/MonthPicker/MonthPicker";
 
 export default class AdvancedPage extends React.Component {
     state = {
@@ -39,6 +40,8 @@ export default class AdvancedPage extends React.Component {
     }
 
     handleColorPick = color => this.setState({ color });
+
+    handleMonthChange = month => this.setState({ month });
 
     getRadioGroup = () => <div className="radio-group">
         <input type="radio" id="adv-radio1" name="adv-radio" value="A" /><label htmlFor="adv-radio1">A</label>
@@ -98,8 +101,7 @@ export default class AdvancedPage extends React.Component {
                         <ColorPicker onColorPick={this.handleColorPick}></ColorPicker>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-month">Month:</label>
-                        <input type="month" id="adv-month" name="adv-month" />
+                        <MonthPicker onMonthChange={this.handleMonthChange}></MonthPicker>
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-week">Week:</label>
